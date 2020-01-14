@@ -4,7 +4,15 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-
+    
+    var userAuthToken;
+    var charHealth;
+    var enemyHealth;
+    var weaponDamage;
+    var enemyWeaponDamage;
+    var mana;
+    var spellDamage;
+    
 
     $('#attack').on('click', attack);
     $('#changeWeapon').on('click', listWeapons);
@@ -12,6 +20,20 @@ $(document).ready(function () {
 
 
 });
+
+
+
+function userLogin() {
+    
+    var userAuthToken2;
+    var actualPath = requestContextPath + ("/userLogin/");
+    
+    $.ajax({
+        type: 'GET',
+        url: actual
+    });
+    
+}
 
 function selectWeapon(clickedId) {
 
@@ -91,3 +113,23 @@ function attack() {
     });
 }
 
+function loadPage() {
+    
+    var myContextPath = $(this).attr('myContextPath');
+    var actualPath = requestContextPath + ("/loadGame/");
+    
+    $.ajax({
+        type: 'GET',
+        url: actualPath,
+        async: false,
+        dataType: 'json',
+        success: function (info) {
+            alert(info.playerCharacter.name);
+            $('#enemyHealth').text("test");
+        },
+        error: function() {
+            alert("fail"  + actualPath);
+        }
+    });
+    
+}

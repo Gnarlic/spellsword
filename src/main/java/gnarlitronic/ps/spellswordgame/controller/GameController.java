@@ -104,15 +104,29 @@ public class GameController {
         
 
     }
+    
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public String homePage(HttpServletRequest request) {
+        return "index";
+    }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String playGame(HttpServletRequest request, Model model) {
+    @RequestMapping(value = "/loadGame", method = RequestMethod.GET)
+    @ResponseBody
+    public CombatInfo playGame(HttpServletRequest request, Model model) {
         gService.reset();
-        model.addAttribute("enemy", gService.getEnemy());
-        model.addAttribute("player", gService.getPlayer());
-        model.addAttribute("weaponName", gService.getEquippedWeapon());
-        model.addAttribute("magicName", gService.getEquippedMagic());
-        return "/index";
+        CombatInfo info = new CombatInfo();
+//        model.addAttribute("enemy", gService.getEnemy());
+//        model.addAttribute("player", gService.getPlayer());
+//        model.addAttribute("weaponName", gService.getEquippedWeapon());
+//        model.addAttribute("magicName", gService.getEquippedMagic());
+        info.setEnemy(gService.getEnemy());
+        info.setPlayerCharacter(gService.getPlayer());
+        info.setWeapon(gService.getWeapon("1"));
+        info.setMagic(gService.getMagic());
+//        model.addAttribute("info", info);
+        System.out.println("success? maybe?");
+        System.out.println(info.enemy.getEnemyName());
+        return info;
     }
 
     @CrossOrigin

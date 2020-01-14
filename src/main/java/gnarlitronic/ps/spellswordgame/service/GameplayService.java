@@ -6,6 +6,7 @@
 package gnarlitronic.ps.spellswordgame.service;
 
 import gnarlitronic.ps.spellswordgame.model.Enemy;
+import gnarlitronic.ps.spellswordgame.model.Magic;
 import gnarlitronic.ps.spellswordgame.model.PlayerCharacter;
 import gnarlitronic.ps.spellswordgame.model.Weapon;
 import java.util.HashMap;
@@ -46,6 +47,8 @@ public interface GameplayService {
     public Enemy getEnemy();
 
     public PlayerCharacter getPlayer();
+    
+    public Magic getMagic();
     
     
     

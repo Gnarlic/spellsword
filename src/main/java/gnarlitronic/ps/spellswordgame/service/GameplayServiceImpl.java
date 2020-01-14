@@ -165,6 +165,11 @@ public class GameplayServiceImpl implements GameplayService {
         return pDao.getPc();
     
     }
+
+    @Override
+    public Magic getMagic() {
+        return mDao.getMagic();
+    }
     
     
 }
